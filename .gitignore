@@ -1,0 +1,9 @@
+*.DS_Store
+*vip.c
+*.gch
+*.rtf
+*.swp
+*.sw*
+*.o
+*libft.a
+core
