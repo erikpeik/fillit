@@ -6,11 +6,12 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:59:23 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/13 16:48:26 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/14 14:16:24 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fillit.h>
+#include <libft.h>
 
 int	main(int argc, char **argv)
 {
