@@ -6,7 +6,7 @@
 #    By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:27:42 by altikka           #+#    #+#              #
-#    Updated: 2022/01/14 23:55:59 by emende           ###   ########.fr        #
+#    Updated: 2022/01/15 00:21:01 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ FLGS = -Wall -Wextra -Werror
 RED = \033[0;31m
 LGRAY = \033[1;30m
 LGREEN = \033[1;32m
+WHITE = \033[1;37m
 
 all: $(NAME)
 
