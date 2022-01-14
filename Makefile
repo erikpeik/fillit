@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/14 14:37:34 by emende           ###   ########.fr        #
+#    Updated: 2022/01/14 15:42:01 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,5 +43,15 @@ $(NAME):
 	gcc -c  $(FLAGS) $(INCS) $(SRCS)
 	mv *.o $(SRC_PATH) 
 	gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
+
+clean:
+	make -C libft/ clean
+	rm -f $(OBJS)
+
+fclean: clean
+	make -C libft/ fclean
+	rm -f $(NAME)
+
+re: fclean all
 
 .PHONY: all
