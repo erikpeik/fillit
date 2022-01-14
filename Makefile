@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/14 14:14:24 by emende           ###   ########.fr        #
+#    Updated: 2022/01/14 14:37:34 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ $(NAME):
 	@echo ""     
 	@echo "                   altikka - emende                         " 
 	make -C libft/
-	gcc -c $(FLAGS) $(INCS) $(SRCS)
+	gcc -c  $(FLAGS) $(INCS) $(SRCS)
+	mv *.o $(SRC_PATH) 
 	gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
 
 .PHONY: all
