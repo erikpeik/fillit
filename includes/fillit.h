@@ -6,13 +6,15 @@
 /*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/14 13:53:42 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/14 14:16:29 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 
 # define FILLIT_H
+
+# include <fcntl.h>
 
 int		fillit(const int fd);
 
