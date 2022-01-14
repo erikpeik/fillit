@@ -8,3 +8,5 @@
 *libft.a
 core
 fillit
+.vscode/
+*.dSYM
