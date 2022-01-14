@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/15 00:19:27 by emende           ###   ########.fr        #
+#    Updated: 2022/01/15 00:41:26 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,13 @@ $(NAME):
 	@echo "                   altikka - emende                         " 
 	@echo "$(NCOLOR)"
 	@make -C libft/
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compailing 27%"
+	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 27%"
 	@gcc -c  $(FLAGS) $(INCS) $(SRCS)
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compailing 67%"
+	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 67%"
 	@mv *.o $(SRC_PATH)
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compailing 99%"
+	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 99%"
 	@gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compailed succesfully!"
+	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiled succesfully!"
 
 clean:
 	@make -C libft/ clean
