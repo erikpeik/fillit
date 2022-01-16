@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/15 00:41:26 by emende           ###   ########.fr        #
+#    Updated: 2022/01/16 20:50:59 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,13 @@ FLAGS = -Wall -Wextra -Werror -Wconversion
 
 LIB_PATH = -L libft/ -lft
 
-SRC_PATH = sources/
+SRC_DIR = sources/
 
-SRCS = $(SRC_PATH)main.c \
-	   $(SRC_PATH)fillit.c 
+SRCS_LIST = main.c fillit.c
 
-OBJS = $(SRCS:.c=.o)
+SRCS = $(addprefix $(SRC_DIR), $(SRCS_LIST))
+
+OBJS = $(SRCS_LIST:.c=.o)
 
 RED = \033[0;31m
 DGRAY = \033[1;30m
@@ -53,7 +54,6 @@ $(NAME):
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 27%"
 	@gcc -c  $(FLAGS) $(INCS) $(SRCS)
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 67%"
-	@mv *.o $(SRC_PATH)
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 99%"
 	@gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiled succesfully!"
