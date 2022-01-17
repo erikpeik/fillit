@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/14 18:34:20 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/17 18:47:10 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,36 +23,48 @@ static void	print_map(char **map)
 		ft_putendl(map[i]);
 		i++;
 	}
+	ft_putchar('\n');
 }
 
-static int	validate_map(char **map)
+static char	**free_map(char **map)
+{
+	size_t	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+	map = NULL;
+	return (map);
+}
+
+static int	validate_map(const char **map)
 {
 	int	row;
 	int	col;
-	int	dot;
 	int	hash;
 
-	dot = 0;
 	hash = 0;
 	row = 0;
-	while (map[row])
+	while (map[row] && row < 4)
 	{
 		col = 0;
 		while (map[row][col])
 		{
-			if (map[row][col] == '.')
-				dot++;
-			else if (map[row][col] == '#')
+			if (map[row][col] == '#')
 				hash++;
-			else
+			else if (map[row][col] != '.')
 				return (-1);
 			col++;
 		}
-		if (col != 4 && row % 4 != 0)
+		if (col != 4)
 			return (-1);
 		row++;
 	}
-	if (hash != 4 || dot != 12)
+	if (hash != 4 || row != 4)
 		return (-1);
 	return (0);
 }
@@ -62,51 +74,48 @@ static char	**fill_map(const int fd)
 	char	**map;
 	char	*line;
 	int		i;
-	int		res;
 
 	map = (char **)malloc(sizeof(*map) * 5);
+	if (map == NULL)
+		exit(0); //semi-laiton
 	i = 0;
 	while (i < 4)
 	{
-		res = get_next_line(fd, &line);
-		map[i] = line;
-		i++;
+		if (get_next_line(fd, &line) < 1 && i == 0)
+			return (NULL);
+		if (*line == '\0')
+			exit((0);
+		map[i++] = line;
 	}
-	res = get_next_line(fd, &line);
+	get_next_line(fd, &line);
 	if (*line != '\0')
-		return (NULL);
-	map[i] = ft_strnew(0);
+	{
+		free(line);
+		exit(0); //semi-laiton
+	}
+	map[i] = NULL;
+	free(line);
 	return (map);
 }
 
-static int	gather_and_validate(const int fd)
+static void	fetcher(const int fd)
 {
-	char	***field_of_maps;
-	int		i;
+	char		**temp;
 
-	i = 0;
-	field_of_maps = (char ***)malloc(sizeof(*field_of_maps) * 5);
-	while (i < 4)
+	while (1)
 	{
-		field_of_maps[i] = fill_map(fd);
-		i++;
-	}	
-	field_of_maps[i] = NULL;
-	i = 0;
-	while (field_of_maps[i])
-	{
-		print_map(field_of_maps[i]);
-		if (validate_map(field_of_maps[i]) == 0)
-			ft_putendl("MAP OK");
-		else
-			ft_putendl("MAP FAIL");
-		i++;
+		temp = fill_map(fd);
+		if (temp == NULL)
+			break ;
+		if (validate_map((const char **) temp) < 0)
+			abort(); //semi-laiton
+		print_map(temp);
+		free_map(temp);
 	}
-	return (0);
 }
 
 int	fillit(const int fd)
 {
-	gather_and_validate(fd);
+	fetcher(fd);
 	return (0);
 }
