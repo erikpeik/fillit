@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/17 23:28:14 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/17 23:50:53 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	validate_map(const char **map)
 
 	hash = 0;
 	row = 0;
-	while (map[row] && row < 4)
+	while (map[row])
 	{
 		col = 0;
 		while (map[row][col])
