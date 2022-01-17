@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/16 20:50:59 by emende           ###   ########.fr        #
+#    Updated: 2022/01/17 14:30:54 by altikka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ $(NAME):
 	@make -C libft/
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 27%"
 	@gcc -c  $(FLAGS) $(INCS) $(SRCS)
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 67%"
+	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 64%"
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 99%"
 	@gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiled succesfully!"
