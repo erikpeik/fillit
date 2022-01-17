@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/17 23:50:53 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/18 00:04:25 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ static char	**fill_map(const int fd)
 
 static void	fetcher(const int fd)
 {
-	char		**temp;
+	char	**temp;
 
 	while (1)
 	{
