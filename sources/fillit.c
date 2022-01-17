@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/17 19:26:01 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/17 23:28:14 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,14 @@ static int	validate_tetrimino(const char **map)
 		col = 0;
 		while (map[row][col])
 		{
-			if (map[row][col] == '#')
-			{
-				if (row > 0 && map[row - 1][col] == '#') // up
-					count++;
-				if (col > 0 && map[row][col - 1] == '#') // left
-					count++;
-				if (row < 3 && map[row + 1][col] == '#') // down
-					count++;
-				if (col < 3 && map[row][col + 1] == '#') // right
-					count++;
-			}
+			if (map[row][col] == '#' && row > 0 && map[row - 1][col] == '#')
+				count++;
+			if (map[row][col] == '#' && col > 0 && map[row][col - 1] == '#')
+				count++;
+			if (map[row][col] == '#' && row < 3 && map[row + 1][col] == '#')
+				count++;
+			if (map[row][col] == '#' && col < 3 && map[row][col + 1] == '#')
+				count++;
 			col++;
 		}
 		row++;
