@@ -10,3 +10,4 @@ core
 fillit
 .vscode/
 *.dSYM
+a.out

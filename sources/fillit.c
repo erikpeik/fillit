@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/17 18:47:10 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/17 19:26:01 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,37 @@ static char	**free_map(char **map)
 	free(map);
 	map = NULL;
 	return (map);
+}
+
+static int	validate_tetrimino(const char **map)
+{
+	int	count;
+	int	row;
+	int	col;
+
+	count = 0;
+	row = 0;
+	while (map[row])
+	{
+		col = 0;
+		while (map[row][col])
+		{
+			if (map[row][col] == '#')
+			{
+				if (row > 0 && map[row - 1][col] == '#') // up
+					count++;
+				if (col > 0 && map[row][col - 1] == '#') // left
+					count++;
+				if (row < 3 && map[row + 1][col] == '#') // down
+					count++;
+				if (col < 3 && map[row][col + 1] == '#') // right
+					count++;
+			}
+			col++;
+		}
+		row++;
+	}
+	return (count);
 }
 
 static int	validate_map(const char **map)
@@ -84,7 +115,7 @@ static char	**fill_map(const int fd)
 		if (get_next_line(fd, &line) < 1 && i == 0)
 			return (NULL);
 		if (*line == '\0')
-			exit((0);
+			exit(0);
 		map[i++] = line;
 	}
 	get_next_line(fd, &line);
@@ -110,6 +141,8 @@ static void	fetcher(const int fd)
 		if (validate_map((const char **) temp) < 0)
 			abort(); //semi-laiton
 		print_map(temp);
+		ft_putnbr(validate_tetrimino((const char **) temp));
+		ft_putchar('\n');
 		free_map(temp);
 	}
 }
