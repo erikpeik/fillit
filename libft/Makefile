@@ -3,16 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+         #
+#    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:27:42 by altikka           #+#    #+#              #
-#    Updated: 2022/01/15 00:21:01 by emende           ###   ########.fr        #
+#    Updated: 2022/01/18 13:52:21 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRCS = ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_strlen.c \
+SRCS_DIR = sources/
+
+SRCS_LIST = ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_strlen.c \
 		ft_strcmp.c ft_strncmp.c ft_strcpy.c ft_strncpy.c ft_strdup.c \
 		ft_strcat.c ft_strncat.c ft_strlcat.c ft_atoi.c ft_strchr.c \
 		ft_strrchr.c ft_strstr.c ft_strnstr.c ft_memset.c ft_bzero.c \
@@ -27,7 +29,14 @@ SRCS = ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_strlen.c \
 		ft_intlen.c ft_abs.c ft_strcasechr.c ft_strncasecmp.c ft_strcasestr.c \
 		ft_isspace.c ft_strrev.c get_next_line.c
 
-OBJS = $(SRCS:.c=.o)
+
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_LIST))
+
+OBJS = $(SRCS_LIST:.c=.o)
+
+INCL_FOLD = includes/
+
+INCL = -I $(INCL_FOLD)
 
 FLGS = -Wall -Wextra -Werror
 
@@ -40,7 +49,7 @@ all: $(NAME)
 
 $(NAME):
 	@echo "$(LGRAY)[LIBFT] $(LGREEN)Making object files..."
-	@gcc -c $(FLGS) $(SRCS)
+	@gcc -c $(FLGS) $(INCL) $(SRCS)
 	@echo "$(LGRAY)[LIBFT] $(LGREEN)Creating library..."
 	@ar rcs $(NAME) $(OBJS)
 	@echo "$(LGRAY)[LIBFT] $(LGREEN)Generated archive libft.a"
