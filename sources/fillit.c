@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/18 00:04:25 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/18 13:39:54 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static char	**fill_map(const int fd)
 
 	map = (char **)malloc(sizeof(*map) * 5);
 	if (map == NULL)
-		exit(0); //semi-laiton
+		exit(0);
 	i = 0;
 	while (i < 4)
 	{
@@ -119,7 +119,7 @@ static char	**fill_map(const int fd)
 	if (*line != '\0')
 	{
 		free(line);
-		exit(0); //semi-laiton
+		exit(0);
 	}
 	map[i] = NULL;
 	free(line);
@@ -136,7 +136,7 @@ static void	fetcher(const int fd)
 		if (temp == NULL)
 			break ;
 		if (validate_map((const char **) temp) < 0)
-			abort(); //semi-laiton
+			exit(0);
 		print_map(temp);
 		ft_putnbr(validate_tetrimino((const char **) temp));
 		ft_putchar('\n');
