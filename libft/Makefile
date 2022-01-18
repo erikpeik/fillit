@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:27:42 by altikka           #+#    #+#              #
-#    Updated: 2022/01/18 13:52:21 by emende           ###   ########.fr        #
+#    Updated: 2022/01/18 13:55:12 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,15 +44,16 @@ RED = \033[0;31m
 LGRAY = \033[1;30m
 LGREEN = \033[1;32m
 WHITE = \033[1;37m
+GREEN = \033[0;32m
 
 all: $(NAME)
 
 $(NAME):
-	@echo "$(LGRAY)[LIBFT] $(LGREEN)Making object files..."
+	@echo "$(LGRAY)[LIBFT] $(GREEN)Making object files..."
 	@gcc -c $(FLGS) $(INCL) $(SRCS)
-	@echo "$(LGRAY)[LIBFT] $(LGREEN)Creating library..."
+	@echo "$(LGRAY)[LIBFT] $(GREEN)Creating library..."
 	@ar rcs $(NAME) $(OBJS)
-	@echo "$(LGRAY)[LIBFT] $(LGREEN)Generated archive libft.a"
+	@echo "$(LGRAY)[LIBFT] $(GREEN)Generated archive libft.a"
 
 clean:
 	@echo "$(LGRAY)[LIBFT] $(RED)Removing object files..."

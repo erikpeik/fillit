@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/18 13:51:07 by emende           ###   ########.fr        #
+#    Updated: 2022/01/18 13:55:06 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ LPURP = \033[1;34m
 PURP = \033[0;35m
 LGREEN = \033[1;32m
 WHITE = \033[1;37m
+GREEN = \033[0;32m
 
 all: $(NAME)
 
@@ -51,12 +52,12 @@ $(NAME):
 	@echo "                   altikka - emende                         "
 	@echo "$(NCOLOR)"
 	@make -C libft/
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 27%"
+	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 27%"
 	@gcc -c  $(FLAGS) $(INCS) $(SRCS)
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 64%"
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 99%"
+	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 64%"
+	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 99%"
 	@gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
-	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiled succesfully!"
+	@echo "$(WHITE)[FILLIT] $(GREEN)Compiled succesfully!"
 
 clean:
 	@make -C libft/ clean
