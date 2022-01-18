@@ -6,13 +6,13 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/17 14:30:54 by altikka          ###   ########.fr        #
+#    Updated: 2022/01/18 13:51:07 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-INCS = -I includes/ -I libft/
+INCS = -I includes/ -I libft/includes/
 
 FLAGS = -Wall -Wextra -Werror -Wconversion
 
@@ -47,8 +47,8 @@ $(NAME):
 	@echo "|___|      |___|  |___|___   |___|___   |___|  |___|___|___|"
 	@echo "|   |      |   |  |   |   |  |   |   |  |   |      |   |    "
 	@echo "|___|      |___|  |___|___|  |___|___|  |___|      |___|    "
-	@echo "$(PURP)"     
-	@echo "                   altikka - emende                         " 
+	@echo "$(PURP)"
+	@echo "                   altikka - emende                         "
 	@echo "$(NCOLOR)"
 	@make -C libft/
 	@echo "$(WHITE)[FILLIT] $(LGREEN)Compiling 27%"
