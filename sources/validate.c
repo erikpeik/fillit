@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 12:39:28 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 12:43:49 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	fetcher(const int fd)
 			exit(0);
 		print_map(temp);
 		ft_putnbr(validate_tetrimino((const char **) temp));
-		if (validate_tetrimino((const char **) temp)  < 6)
+		if (validate_tetrimino((const char **) temp) < 6)
 			exit(0);
 		ft_putchar('\n');
 		free_map(temp);
