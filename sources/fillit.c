@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/19 18:58:03 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 23:29:21 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**free_map(char **map)
 
 int	fillit(const int fd)
 {
-	t_block *head;
+	t_block	*head;
 
 	validate(fd, &head);
 	return (0);

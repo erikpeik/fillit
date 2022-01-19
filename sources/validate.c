@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 18:58:42 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 23:28:43 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,48 +155,21 @@ static char	**fill_map(const int fd)
 	return (map);
 }
 
-static void	print_stuct(t_block *head)
-{
-	int	i;
-
-	while(head != NULL)
-	{
-		i = 0;
-		while (i < 8)
-		{
-			ft_putnbr((head->pos)[i]);
-			i++;
-		}
-		ft_putchar('\n');
-		head = head->next;
-	}
-}
-
-void	validate(const int fd, t_block **head)
+int	*validate(const int fd)
 {
 	char	**map;
 	int		*pos;
-	t_block	*temp;
 
-	temp = block_new(NULL);
-	*head = temp;
-	while (1)
-	{
-		map = fill_map(fd);
-		if (map == NULL)
-			break ;
-		print_map(map);
-		if (validate_map((const char **) map) < 0)
-			exit(5);
-		if (validate_tetrimino((const char **) map) < 6)
-			exit(6);
-		pos = find_coordinates((const char **) map);
-		top_left(pos);
-		temp = block_new(pos);
-		print_stuct(temp);
-		temp = temp->next;
-//		free(pos);
-		free_map(map);
-	}
-//	print_stuct(*head);
+	map = fill_map(fd);
+	if (map == NULL)
+		return (NULL);
+	print_map(map);
+	if (validate_map((const char **) map) < 0)
+		exit(5);
+	if (validate_tetrimino((const char **) map) < 6)
+		exit(6);
+	pos = find_coordinates((const char **) map);
+	top_left(pos);
+	free_map(map);
+	return (pos);
 }

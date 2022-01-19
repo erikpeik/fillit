@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 17:11:11 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 18:58:00 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 23:28:56 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	block_append(t_block **head, const int *pos)
 {
-	t_block *temp;
-	t_block *new;
+	t_block	*temp;
+	t_block	*new;
 
 	temp = *head;
 	while (temp->next != NULL)
