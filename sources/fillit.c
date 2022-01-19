@@ -6,7 +6,7 @@
 /*   By: altikka & ememde <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/19 12:35:37 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 14:57:41 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ char	**free_map(char **map)
 
 int	fillit(const int fd)
 {
-	fetcher(fd);
+	validate(fd);
 	return (0);
 }

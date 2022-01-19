@@ -6,14 +6,42 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 14:40:02 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/19 15:50:35 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-static void	*find_coordinates(const char **map)
+static void	top_left(int *arr)
+{
+	int	x_min;
+	int	y_min;
+	int	i;
+
+	x_min = 4;
+	y_min = 4;
+	i = 0;
+	while (i < 8)
+	{
+		if (i % 2 == 0 && arr[i] < x_min)
+			x_min = arr[i];
+		else if (i % 2 != 0 && arr[i] < y_min)
+			y_min = arr[i];
+		i++;
+	}
+	i = 0;
+	while (i < 8)
+	{		
+		if (i % 2 == 0)
+			arr[i] -= x_min;
+		else
+			arr[i] -= y_min;
+		i++;
+	}
+}
+
+static int	*find_coordinates(const char **map)
 {
 	int	*array;
 	int	count;
@@ -39,6 +67,7 @@ static void	*find_coordinates(const char **map)
 		}
 		row++;
 	}
+	return (array);
 }
 
 static int	validate_tetrimino(const char **map)
@@ -126,9 +155,11 @@ static char	**fill_map(const int fd)
 	return (map);
 }
 
-void	fetcher(const int fd)
+void	validate(const int fd)
 {
 	char	**temp;
+	int		*coord;
+	int		i;
 
 	while (1)
 	{
@@ -138,9 +169,23 @@ void	fetcher(const int fd)
 		if (validate_map((const char **) temp) < 0)
 			exit(0);
 		print_map(temp);
-		ft_putnbr(validate_tetrimino((const char **) temp));
 		if (validate_tetrimino((const char **) temp) < 6)
 			exit(0);
+		coord = find_coordinates((const char **) temp);
+		i = 0;
+		while (i < 8)
+		{
+			ft_putnbr(coord[i]);
+			i++;
+		}
+		ft_putchar('\n');
+		top_left(coord);
+		i = 0;
+		while (i < 8)
+		{
+			ft_putnbr(coord[i]);
+			i++;
+		}
 		ft_putchar('\n');
 		free_map(temp);
 	}
