@@ -6,12 +6,40 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 14:01:52 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/19 14:40:02 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
+
+static void	*find_coordinates(const char **map)
+{
+	int	*array;
+	int	count;
+	int	row;
+	int	col;
+
+	array = (int *)malloc(sizeof(*array) * 8);
+	if (array == NULL)
+		exit(0);
+	count = 0;
+	row = 0;
+	while (map[row])
+	{
+		col = 0;
+		while (map[row][col])
+		{
+			if (map[row][col] == '#')
+			{
+				array[count++] = row;
+				array[count++] = col;
+			}
+			col++;
+		}
+		row++;
+	}
+}
 
 static int	validate_tetrimino(const char **map)
 {
@@ -96,34 +124,6 @@ static char	**fill_map(const int fd)
 	map[i] = NULL;
 	free(line);
 	return (map);
-}
-
-static void	*find_coordinates(const char **map)
-{
-	int	*array;
-	int	row;
-	int	col;
-	int	count;
-
-	array = (int *)malloc(sizeof(*array) * 8);
-	if (array == NULL)
-		exit(0);
-	row = 0;
-	count = 0;
-	while (map[row])
-	{
-		col = 0;
-		while (map[row][col])
-		{
-			if (map[row][col] == '#')
-			{
-				array[count++] = row;
-				array[count++] = col;
-			}
-			col++;
-		}
-		row++;
-	}
 }
 
 void	fetcher(const int fd)
