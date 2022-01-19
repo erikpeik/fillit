@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/19 12:31:20 by emende           ###   ########.fr        #
+#    Updated: 2022/01/19 17:59:33 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIB_PATH = -L libft/ -lft
 
 SRC_DIR = sources/
 
-SRCS_LIST = main.c fillit.c validate.c
+SRCS_LIST = main.c fillit.c validate.c block_new.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRCS_LIST))
 

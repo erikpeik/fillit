@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 15:50:35 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/19 18:58:42 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	top_left(int *arr)
 	}
 	i = 0;
 	while (i < 8)
-	{		
+	{
 		if (i % 2 == 0)
 			arr[i] -= x_min;
 		else
@@ -50,7 +50,7 @@ static int	*find_coordinates(const char **map)
 
 	array = (int *)malloc(sizeof(*array) * 8);
 	if (array == NULL)
-		exit(0);
+		exit(1);
 	count = 0;
 	row = 0;
 	while (map[row])
@@ -134,59 +134,69 @@ static char	**fill_map(const int fd)
 
 	map = (char **)malloc(sizeof(*map) * 5);
 	if (map == NULL)
-		exit(0);
+		exit(2);
 	i = 0;
 	while (i < 4)
 	{
 		if (get_next_line(fd, &line) < 1 && i == 0)
 			return (NULL);
 		if (*line == '\0')
-			exit(0);
+			exit(3);
 		map[i++] = line;
 	}
 	get_next_line(fd, &line);
 	if (*line != '\0')
 	{
 		free(line);
-		exit(0);
+		exit(4);
 	}
 	map[i] = NULL;
 	free(line);
 	return (map);
 }
 
-void	validate(const int fd)
+static void	print_stuct(t_block *head)
 {
-	char	**temp;
-	int		*coord;
-	int		i;
+	int	i;
 
+	while(head != NULL)
+	{
+		i = 0;
+		while (i < 8)
+		{
+			ft_putnbr((head->pos)[i]);
+			i++;
+		}
+		ft_putchar('\n');
+		head = head->next;
+	}
+}
+
+void	validate(const int fd, t_block **head)
+{
+	char	**map;
+	int		*pos;
+	t_block	*temp;
+
+	temp = block_new(NULL);
+	*head = temp;
 	while (1)
 	{
-		temp = fill_map(fd);
-		if (temp == NULL)
+		map = fill_map(fd);
+		if (map == NULL)
 			break ;
-		if (validate_map((const char **) temp) < 0)
-			exit(0);
-		print_map(temp);
-		if (validate_tetrimino((const char **) temp) < 6)
-			exit(0);
-		coord = find_coordinates((const char **) temp);
-		i = 0;
-		while (i < 8)
-		{
-			ft_putnbr(coord[i]);
-			i++;
-		}
-		ft_putchar('\n');
-		top_left(coord);
-		i = 0;
-		while (i < 8)
-		{
-			ft_putnbr(coord[i]);
-			i++;
-		}
-		ft_putchar('\n');
-		free_map(temp);
+		print_map(map);
+		if (validate_map((const char **) map) < 0)
+			exit(5);
+		if (validate_tetrimino((const char **) map) < 6)
+			exit(6);
+		pos = find_coordinates((const char **) map);
+		top_left(pos);
+		temp = block_new(pos);
+		print_stuct(temp);
+		temp = temp->next;
+//		free(pos);
+		free_map(map);
 	}
+//	print_stuct(*head);
 }

@@ -1,50 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   block_append.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/19 18:58:03 by emende           ###   ########.fr       */
+/*   Created: 2022/01/19 17:11:11 by emende            #+#    #+#             */
+/*   Updated: 2022/01/19 18:58:00 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-void	print_map(char **map)
+void	block_append(t_block **head, const int *pos)
 {
-	int	i;
+	t_block *temp;
+	t_block *new;
 
-	i = 0;
-	while (map[i])
-	{
-		ft_putendl(map[i]);
-		i++;
-	}
-	ft_putchar('\n');
-}
-
-char	**free_map(char **map)
-{
-	size_t	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-	map = NULL;
-	return (map);
-}
-
-int	fillit(const int fd)
-{
-	t_block *head;
-
-	validate(fd, &head);
-	return (0);
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+	new = block_new(pos);
+	temp->next = new;
 }
