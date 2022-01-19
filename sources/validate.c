@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 12:43:49 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 13:09:32 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,34 @@ static char	**fill_map(const int fd)
 	map[i] = NULL;
 	free(line);
 	return (map);
+}
+
+static void *find_coordinates(const char **map)
+{
+	int	*array;
+	int	row;
+	int	col;
+	int	count;
+
+	array = (int *)malloc(sizeof(*arrey) * 8);
+	if (array == NULL)
+		exit(0);
+	row = 0;
+	count = 0;
+	while(map[row])
+	{
+		col = 0;
+		while (map[row][col])
+		{
+			if (map[row][col] == '#')
+			{
+				array[count++] = row;
+				array[count++] = col;
+			}
+			col++
+		}
+		row++
+	}
 }
 
 void	fetcher(const int fd)
