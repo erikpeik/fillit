@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/20 17:34:29 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/20 21:59:49 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,16 +140,15 @@ static char	**fill_map(const int fd)
 	{
 		if (get_next_line(fd, &line) < 1 && i == 0)
 			return (NULL);
-		if (*line == '\0')
-			exit(3);
 		map[i++] = ft_strdup(line);
 		ft_strdel(&line);
 	}
 	get_next_line(fd, &line);
 	if (*line != '\0')
-		free(line);
-	if (*line != '\0')
+	{
+		ft_strdel(&line);
 		exit(4);
+	}
 	map[i] = NULL;
 	free(line);
 	return (map);
