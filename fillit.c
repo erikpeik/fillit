@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/20 17:40:24 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/20 21:56:41 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	fillit(const int fd)
 
 	pos = lost_and_found(fd);
 	print_int_array(pos);
-	ft_putchar('\n');
 	head = block_new((const int *) pos);
 	free(pos);
 	count = 1;
@@ -46,7 +45,6 @@ int	fillit(const int fd)
 		if (pos == NULL)
 			break ;
 		print_int_array(pos);
-		ft_putchar('\n');
 		block_append(&head, (const int *) pos);
 		free(pos);
 		count++;

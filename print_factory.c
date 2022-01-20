@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:49:24 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/20 15:57:08 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/20 21:57:11 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	print_int_array(int *arr)
 	i = 0;
 	while (i < ARR_LEN)
 		ft_putnbr(arr[i++]);
+	ft_putchar('\n');
 }
 
 void	print_struct(t_block *head)
@@ -31,9 +32,9 @@ void	print_struct(t_block *head)
 	while (temp != NULL)
 	{
 		ft_putnbr((int ) temp->n);
-		ft_putstr(":	");
+		ft_putstr(": ");
 		print_int_array(temp->pos);
-		ft_putstr("w: ");
+		ft_putstr(" w: ");
 		ft_putnbr(temp->width);
 		ft_putstr(" h: ");
 		ft_putnbr(temp->height);
