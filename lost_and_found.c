@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   lost_and_found.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 23:28:43 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/20 16:24:57 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-static void	top_left(int *arr)
+static void	push_top_left(int *arr)
 {
-	int	x_min;
-	int	y_min;
+	int	row_min;
+	int	col_min;
 	int	i;
 
-	x_min = 4;
-	y_min = 4;
+	row_min = FOUR;
+	col_min = FOUR;
 	i = 0;
-	while (i < 8)
+	while (i < ARR_LEN)
 	{
-		if (i % 2 == 0 && arr[i] < x_min)
-			x_min = arr[i];
-		else if (i % 2 != 0 && arr[i] < y_min)
-			y_min = arr[i];
+		if (i % 2 == 0 && arr[i] < row_min)
+			row_min = arr[i];
+		else if (i % 2 != 0 && arr[i] < col_min)
+			col_min = arr[i];
 		i++;
 	}
 	i = 0;
-	while (i < 8)
+	while (i < ARR_LEN)
 	{
 		if (i % 2 == 0)
-			arr[i] -= x_min;
+			arr[i] -= row_min;
 		else
-			arr[i] -= y_min;
+			arr[i] -= col_min;
 		i++;
 	}
 }
@@ -44,14 +44,14 @@ static void	top_left(int *arr)
 static int	*find_coordinates(const char **map)
 {
 	int	*array;
-	int	count;
+	int	i;
 	int	row;
 	int	col;
 
-	array = (int *)malloc(sizeof(*array) * 8);
+	array = (int *)malloc(sizeof(*array) * ARR_LEN);
 	if (array == NULL)
 		exit(1);
-	count = 0;
+	i = 0;
 	row = 0;
 	while (map[row])
 	{
@@ -60,8 +60,8 @@ static int	*find_coordinates(const char **map)
 		{
 			if (map[row][col] == '#')
 			{
-				array[count++] = row;
-				array[count++] = col;
+				array[i++] = row;
+				array[i++] = col;
 			}
 			col++;
 		}
@@ -72,11 +72,11 @@ static int	*find_coordinates(const char **map)
 
 static int	validate_tetrimino(const char **map)
 {
-	int	count;
+	int	touch;
 	int	row;
 	int	col;
 
-	count = 0;
+	touch = 0;
 	row = 0;
 	while (map[row])
 	{
@@ -84,18 +84,18 @@ static int	validate_tetrimino(const char **map)
 		while (map[row][col])
 		{
 			if (map[row][col] == '#' && row > 0 && map[row - 1][col] == '#')
-				count++;
+				touch++;
 			if (map[row][col] == '#' && col > 0 && map[row][col - 1] == '#')
-				count++;
+				touch++;
 			if (map[row][col] == '#' && row < 3 && map[row + 1][col] == '#')
-				count++;
+				touch++;
 			if (map[row][col] == '#' && col < 3 && map[row][col + 1] == '#')
-				count++;
+				touch++;
 			col++;
 		}
 		row++;
 	}
-	return (count);
+	return (touch);
 }
 
 static int	validate_map(const char **map)
@@ -117,11 +117,11 @@ static int	validate_map(const char **map)
 				return (-1);
 			col++;
 		}
-		if (col != 4)
+		if (col != FOUR)
 			return (-1);
 		row++;
 	}
-	if (hash != 4 || row != 4)
+	if (hash != FOUR || row != FOUR)
 		return (-1);
 	return (0);
 }
@@ -132,7 +132,7 @@ static char	**fill_map(const int fd)
 	char	*line;
 	int		i;
 
-	map = (char **)malloc(sizeof(*map) * 5);
+	map = (char **)malloc(sizeof(*map) * FOUR + 1);
 	if (map == NULL)
 		exit(2);
 	i = 0;
@@ -155,7 +155,7 @@ static char	**fill_map(const int fd)
 	return (map);
 }
 
-int	*validate(const int fd)
+int	*lost_and_found(const int fd)
 {
 	char	**map;
 	int		*pos;
@@ -169,7 +169,7 @@ int	*validate(const int fd)
 	if (validate_tetrimino((const char **) map) < 6)
 		exit(6);
 	pos = find_coordinates((const char **) map);
-	top_left(pos);
+	push_top_left(pos);
 	free_map(map);
 	return (pos);
 }
