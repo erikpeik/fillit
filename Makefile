@@ -6,25 +6,21 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/19 17:59:33 by emende           ###   ########.fr        #
+#    Updated: 2022/01/20 11:43:58 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-INCS = -I includes/ -I libft/includes/
+INCS = -I libft/
 
 FLAGS = -Wall -Wextra -Werror -Wconversion
 
 LIB_PATH = -L libft/ -lft
 
-SRC_DIR = sources/
+SRCS = main.c fillit.c validate.c block_new.c
 
-SRCS_LIST = main.c fillit.c validate.c block_new.c
-
-SRCS = $(addprefix $(SRC_DIR), $(SRCS_LIST))
-
-OBJS = $(SRCS_LIST:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 RED = \033[0;31m
 DGRAY = \033[1;30m
@@ -67,7 +63,6 @@ clean:
 fclean: clean
 	@make -C libft/ fclean
 	@echo "$(WHITE)[FILLIT] $(RED)Removing binary file..."
-	@sleep 2
 	@rm -f $(NAME)
 
 re: fclean all
