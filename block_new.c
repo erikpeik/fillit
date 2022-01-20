@@ -6,7 +6,7 @@
 /*   By: altikka & emende  <@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:52:44 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 23:29:44 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/20 12:52:40 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_block	*block_new(const int *pos)
 {
 	t_block	*new;
 
-	new = (t_block *)malloc(sizeof(new));
+	new = (t_block *)malloc(sizeof(t_list));
 	if (new == NULL)
 		return (NULL);
 	if (pos == NULL)
@@ -26,12 +26,13 @@ t_block	*block_new(const int *pos)
 	}
 	else
 	{
-		new->pos = (int *)malloc(8);
+		new->pos = (int *)malloc(sizeof(int) * 8);
 		if (new->pos == NULL)
 		{
+			free(new);
 			return (NULL);
 		}
-		ft_memcpy(new->pos, pos, 8);
+		ft_memcpy(new->pos, pos, (sizeof(int) * 8));
 	}
 	new->width = 0;
 	new->height = 0;
