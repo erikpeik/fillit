@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/19 23:48:38 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/20 12:53:47 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,35 @@ void	print_int_array(int *arr)
 	ft_putchar('\n');
 }
 
+void	print_struct(t_block *head)
+{
+	t_block	*temp;
+
+	temp = head;
+	while (head != NULL)
+	{
+		print_int_array(head->pos);
+		head = head->next;
+	}
+}
+
 int	fillit(const int fd)
 {
-	int	*pos;
+	int		*pos;
+	t_block	*head;
 
+	pos = validate(fd);
+	print_int_array(pos);
+	head = block_new((const int *)pos);
 	while (1)
 	{
 		pos = validate(fd);
 		if (pos == NULL)
 			break ;
 		print_int_array(pos);
+		block_append(&head, (const int *)pos);
 		free(pos);
 	}
+	print_struct(head);
 	return (0);
 }
