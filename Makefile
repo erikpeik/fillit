@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/20 11:43:58 by emende           ###   ########.fr        #
+#    Updated: 2022/01/20 12:02:04 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -Wconversion
 
 LIB_PATH = -L libft/ -lft
 
-SRCS = main.c fillit.c validate.c block_new.c
+SRCS = main.c fillit.c validate.c block_new.c block_append.c
 
 OBJS = $(SRCS:.c=.o)
 
