@@ -6,7 +6,7 @@
 /*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:46:38 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/14 16:23:04 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/20 23:32:59 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,7 @@ char	*ft_strnchr(char const *s, int c, size_t n);
 char	*ft_strcasechr(char const *s, int c);
 char	*ft_strcasestr(char const *haystack, char const *needle);
 char	*ft_strrev(char *str);
+
+int		ft_sqrt(int nb);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:27:42 by altikka           #+#    #+#              #
-#    Updated: 2022/01/20 11:39:54 by emende           ###   ########.fr        #
+#    Updated: 2022/01/20 23:32:30 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRCS = ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_strlen.c \
 	   ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 	   ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_strndup.c ft_strnchr.c \
 	   ft_intlen.c ft_abs.c ft_strcasechr.c ft_strncasecmp.c ft_strcasestr.c \
-	   ft_isspace.c ft_strrev.c get_next_line.c
+	   ft_isspace.c ft_strrev.c get_next_line.c ft_sqrt.c
 
 OBJS = $(SRCS:.c=.o)
 
