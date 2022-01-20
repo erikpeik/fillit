@@ -6,7 +6,7 @@
 /*   By: altikka & emende  <@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 16:52:44 by emende            #+#    #+#             */
-/*   Updated: 2022/01/19 18:14:59 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 23:29:44 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_block	*block_new(const int *pos)
 	{
 		new->pos = NULL;
 	}
-	else 
+	else
 	{
 		new->pos = (int *)malloc(8);
 		if (new->pos == NULL)

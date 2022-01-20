@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/19 18:58:03 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/19 23:48:38 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ void	print_map(char **map)
 
 	i = 0;
 	while (map[i])
-	{
-		ft_putendl(map[i]);
-		i++;
-	}
-	ft_putchar('\n');
+		ft_putendl(map[i++]);
 }
 
 char	**free_map(char **map)
@@ -41,10 +37,27 @@ char	**free_map(char **map)
 	return (map);
 }
 
+void	print_int_array(int *arr)
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+		ft_putnbr(arr[i++]);
+	ft_putchar('\n');
+}
+
 int	fillit(const int fd)
 {
-	t_block *head;
+	int	*pos;
 
-	validate(fd, &head);
+	while (1)
+	{
+		pos = validate(fd);
+		if (pos == NULL)
+			break ;
+		print_int_array(pos);
+		free(pos);
+	}
 	return (0);
 }
