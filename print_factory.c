@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:49:24 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/20 21:57:11 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/21 16:09:39 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_struct(t_block *head)
 	t_block	*temp;
 
 	temp = head;
-	ft_putendl("Printing attributes tetriminos...");
+	ft_putendl("Printing attributes...");
 	while (temp != NULL)
 	{
 		ft_putnbr((int ) temp->n);

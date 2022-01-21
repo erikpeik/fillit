@@ -6,12 +6,20 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/20 21:56:41 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/21 16:04:06 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+void	free_blocks(t_block **abl)
+{
+	if ((*abl)->next != NULL)
+		free_blocks(&(*abl)->next);
+	free((*abl)->pos);
+	free(*abl);
+}
 
 char	**free_map(char **map)
 {
@@ -53,5 +61,6 @@ int	fillit(const int fd)
 		exit(0);
 	block_set_attributes(&head);
 	print_struct(head);
+	free_blocks(&head);
 	return (0);
 }

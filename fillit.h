@@ -6,7 +6,7 @@
 /*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/20 16:24:55 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/21 16:03:18 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_block
 int		fillit(const int fd);
 
 char	**free_map(char **map);
+void	free_blocks(t_block **abl);
 
 int		*lost_and_found(const int fd);
 t_block	*block_new(const int *pos);

@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:59:23 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/20 22:14:06 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/21 16:15:52 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	main(int argc, char **argv)
 	fillit(fd);
 	if (close(fd) == -1 && error_handle())
 		return (-1);
+	system("leaks fillit"); //laiton
 	return (0);
 }
