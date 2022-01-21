@@ -6,7 +6,7 @@
 /*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/21 16:03:18 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/21 17:03:28 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ char	**free_map(char **map);
 void	free_blocks(t_block **abl);
 
 int		*lost_and_found(const int fd);
+int		validate_map(const char **map);
+int		validate_tetrimino(const char **map);
+
 t_block	*block_new(const int *pos);
 void	block_append(t_block **head, const int *pos);
 void	block_set_attributes(t_block **head);

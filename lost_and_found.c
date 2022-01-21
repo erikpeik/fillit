@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/20 22:09:25 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/21 17:12:46 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,60 +70,20 @@ static int	*find_coordinates(const char **map)
 	return (array);
 }
 
-static int	validate_tetrimino(const char **map)
+static void	get_fifth_line(const int fd)
 {
-	int	touch;
-	int	row;
-	int	col;
+	char	*line;
+	int		ret;
 
-	touch = 0;
-	row = 0;
-	while (map[row])
+	ret = get_next_line(fd, &line);
+	if (ret < 1)
+		exit(7);
+	if (*line != '\0')
 	{
-		col = 0;
-		while (map[row][col])
-		{
-			if (map[row][col] == '#' && row > 0 && map[row - 1][col] == '#')
-				touch++;
-			if (map[row][col] == '#' && col > 0 && map[row][col - 1] == '#')
-				touch++;
-			if (map[row][col] == '#' && row < 3 && map[row + 1][col] == '#')
-				touch++;
-			if (map[row][col] == '#' && col < 3 && map[row][col + 1] == '#')
-				touch++;
-			col++;
-		}
-		row++;
+		ft_strdel(&line);
+		exit(4);
 	}
-	return (touch);
-}
-
-static int	validate_map(const char **map)
-{
-	int	row;
-	int	col;
-	int	hash;
-
-	hash = 0;
-	row = 0;
-	while (map[row])
-	{
-		col = 0;
-		while (map[row][col])
-		{
-			if (map[row][col] == '#')
-				hash++;
-			else if (map[row][col] != '.')
-				return (-1);
-			col++;
-		}
-		if (col != FOUR)
-			return (-1);
-		row++;
-	}
-	if (hash != FOUR || row != FOUR)
-		return (-1);
-	return (0);
+	free(line);
 }
 
 static char	**fill_map(const int fd)
@@ -139,18 +99,18 @@ static char	**fill_map(const int fd)
 	while (i < FOUR)
 	{
 		if (get_next_line(fd, &line) < 1 && i == 0)
+		{
+			free(map);
 			return (NULL);
-		map[i++] = ft_strdup(line);
+		}
+		map[i] = ft_strdup(line);
+		if (map[i] == NULL)
+			exit(3);
 		ft_strdel(&line);
+		i++;
 	}
-	get_next_line(fd, &line);
-	if (*line != '\0')
-	{
-		ft_strdel(&line);
-		exit(4);
-	}
+	get_fifth_line(fd);
 	map[i] = NULL;
-	free(line);
 	return (map);
 }
 
