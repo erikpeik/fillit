@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/21 16:04:06 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/21 17:24:32 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ int	fillit(const int fd)
 	head = block_new((const int *) pos);
 	free(pos);
 	count = 1;
-	while (count <= 27)
+	while (count)
 	{
+		if (count > 26)
+			exit(0);
 		pos = lost_and_found(fd);
 		if (pos == NULL)
 			break ;
@@ -57,8 +59,6 @@ int	fillit(const int fd)
 		free(pos);
 		count++;
 	}
-	if (count > 26)
-		exit(0);
 	block_set_attributes(&head);
 	print_struct(head);
 	free_blocks(&head);
