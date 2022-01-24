@@ -6,14 +6,14 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:40:02 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/24 14:41:15 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/24 15:08:21 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
- void	free_map(void **ar, size_t n)
+void	free_map(void **ar, size_t n)
 {
 	size_t	i;
 
