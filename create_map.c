@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:40:02 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/24 13:39:36 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/24 14:41:15 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	**create_map(size_t size)
 			free_map((void **) map, size);
 			return (NULL);
 		}
+		ft_memset(map[row], 0, sizeof(**map) * (size));
 		row++;
 	}
 	return (map);
