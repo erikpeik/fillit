@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/21 17:24:32 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/24 14:02:17 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,6 @@ void	free_blocks(t_block **abl)
 		free_blocks(&(*abl)->next);
 	free((*abl)->pos);
 	free(*abl);
-}
-
-char	**free_map(char **map)
-{
-	size_t	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-	map = NULL;
-	return (map);
 }
 
 int	fillit(const int fd)

@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/21 17:03:55 by altikka          ###   ########.fr        #
+#    Updated: 2022/01/24 13:37:33 by altikka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ FLAGS = -Wall -Wextra -Werror -Wconversion
 LIB_PATH = -L libft/ -lft
 
 SRCS = main.c fillit.c lost_and_found.c block_new.c block_append.c \
-	   block_set_attributes.c print_factory.c validation_station.c
+	   block_set_attributes.c print_factory.c validation_station.c \
+	   create_map.c
 
 OBJS = $(SRCS:.c=.o)
 

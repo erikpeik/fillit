@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/21 17:12:46 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/24 13:54:22 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	get_fifth_line(const int fd)
 	int		ret;
 
 	ret = get_next_line(fd, &line);
-	if (ret < 1)
+	if (ret < 0)
 		exit(7);
 	if (*line != '\0')
 	{
@@ -129,6 +129,6 @@ int	*lost_and_found(const int fd)
 		exit(6);
 	pos = find_coordinates((const char **) map);
 	push_top_left(pos);
-	free_map(map);
+	free_map((void **) map, FOUR);
 	return (pos);
 }
