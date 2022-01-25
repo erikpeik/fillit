@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   block_set_attributes.c                             :+:      :+:    :+:   */
+/*   print_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 14:19:40 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/24 15:57:55 by altikka          ###   ########.fr       */
+/*   Created: 2022/01/24 15:59:03 by altikka           #+#    #+#             */
+/*   Updated: 2022/01/24 18:35:08 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-void	block_set_attributes(t_block **head)
+void	print_result(int **map, size_t n)
 {
-	t_block	*temp;
-	int		n;
-	size_t	i;
+	size_t	row;
+	size_t	col;
 
-	temp = *head;
-	n = 1;
-	while (temp)
+	row = 0;
+	while (row < n)
 	{
-		i = 0;
-		while (i < ARR_LEN)
+		col = 0;
+		while (col < n)
 		{
-			if (i % 2 == 0 && temp->pos[i] >= temp->height)
-				temp->height = (temp->pos)[i] + 1;
-			else if (i % 2 != 0 && temp->pos[i] >= temp->width)
-				temp->width = (temp->pos)[i] + 1;
-			i++;
+			if (map[row][col] == 0)
+				ft_putchar('.');
+			else
+				ft_putchar((char )(map[row][col] + 64));
+			col++;
 		}
-		temp->n = n;
-		temp = temp->next;
-		n++;
+		ft_putchar('\n');
+		row++;
 	}
 }

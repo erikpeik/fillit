@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/24 15:03:20 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/25 15:13:07 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	fillit(const int fd)
 	int		*pos;
 	t_block	*head;
 	size_t	count;
+	size_t	size;
+	int		**map;
 
 	pos = lost_and_found(fd);
 	print_int_array(pos);
@@ -46,7 +48,14 @@ int	fillit(const int fd)
 	}
 	block_set_attributes(&head);
 	print_struct(head);
-	ft_putnbr((int )map_min_size(head));
+	size = map_min_size(head);
+	map = create_map(size);
+
+	print_result(map, size);
+	solver(head, &map, size);
+	print_result(map, size);
+
+	free_map((void **) map, size);
 	free_blocks(&head);
 	return (0);
 }

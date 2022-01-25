@@ -1,39 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   block_set_attributes.c                             :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 14:19:40 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/24 15:57:55 by altikka          ###   ########.fr       */
+/*   Created: 2022/01/25 13:13:39 by altikka           #+#    #+#             */
+/*   Updated: 2022/01/25 14:03:10 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-void	block_set_attributes(t_block **head)
+void	move_left_and_down(int *pos)
 {
-	t_block	*temp;
-	int		n;
-	size_t	i;
+	int	col_min;
+	int	i;
 
-	temp = *head;
-	n = 1;
-	while (temp)
+	col_min = FOUR;
+	i = 0;
+	while (i < ARR_LEN)
 	{
-		i = 0;
-		while (i < ARR_LEN)
-		{
-			if (i % 2 == 0 && temp->pos[i] >= temp->height)
-				temp->height = (temp->pos)[i] + 1;
-			else if (i % 2 != 0 && temp->pos[i] >= temp->width)
-				temp->width = (temp->pos)[i] + 1;
-			i++;
-		}
-		temp->n = n;
-		temp = temp->next;
-		n++;
+		if (i % 2 != 0 && pos[i] < col_min)
+			col_min = pos[i];
+		i++;
+	}
+	i = 0;
+	while (i < ARR_LEN)
+	{
+		if (i % 2 != 0)
+			pos[i] -= col_min;
+		else
+			pos[i] += 1;
+		i++;
+	}
+}
+
+void	move_right(int *pos)
+{
+	int	i;
+
+	i = 0;
+	while (i < ARR_LEN)
+	{
+		if (i % 2 != 0)
+			pos[i] += 1;
+		i++;
 	}
 }

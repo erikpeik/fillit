@@ -6,7 +6,7 @@
 #    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/24 15:02:59 by emende           ###   ########.fr        #
+#    Updated: 2022/01/24 16:09:23 by altikka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIB_PATH = -L libft/ -lft
 
 SRCS = main.c fillit.c lost_and_found.c block_new.c block_append.c \
 	   block_set_attributes.c print_factory.c validation_station.c \
-	   create_map.c map_min_size.c
+	   create_map.c map_min_size.c solver.c print_result.c
 
 OBJS = $(SRCS:.c=.o)
 

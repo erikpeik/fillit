@@ -6,12 +6,21 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:40:02 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/24 15:08:21 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/25 15:17:04 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+int	**recreate_map(int **map, size_t size)
+{
+	int	**new;
+
+	free_map((void **) map, (size - 1));
+	new = create_map(size);
+	return (new);
+}
 
 void	free_map(void **ar, size_t n)
 {
