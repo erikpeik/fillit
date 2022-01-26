@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:17:19 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/26 17:40:47 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 00:37:29 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+#include <stdio.h> // REMOVE
 
 static int	does_it_fit(t_block *tet, int **map, size_t size)
 {
@@ -35,6 +37,37 @@ static int	does_it_fit(t_block *tet, int **map, size_t size)
 	return (1);
 }
 
+int	solver(t_block *tet, int ***map, size_t *size)
+{
+	int	ret;
+
+	if (tet == NULL)
+		return (1);
+	ret = does_it_fit(tet, *map, *size);
+	while (ret != -121)
+	{
+		if (ret == 0)
+			move_right(tet->pos);
+		if (ret == -120)
+			move_left_and_down(tet->pos);
+		if (ret == 1)
+		{
+			place(tet, map, tet->n);
+			if (solver(tet->next, map, size) == 1)
+				return (1);
+			else
+			{
+				place(tet, map, 0);
+				move_right(tet->pos);
+			}
+		}
+		ret = does_it_fit(tet, *map, *size);
+	}
+	push_top_left(tet->pos);
+	return (0);
+}
+
+/*
 int	solver(t_block *tet, int ***map, size_t *size)
 {
 	int	ret;
@@ -71,7 +104,7 @@ int	solver(t_block *tet, int ***map, size_t *size)
 		}
 	}
 	return (0);
-}
+} */
 
 /*int	solver(t_block *tet, int ***map, size_t *size)
 {
