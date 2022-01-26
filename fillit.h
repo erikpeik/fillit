@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/26 16:36:27 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 00:37:49 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ size_t	map_min_size(t_block *head);
 void	move_right(int *pos);
 void	move_left_and_down(int *pos);
 void	place(t_block *tet, int ***map, int n);
+void	push_top_left(int *arr);
 
 void	print_int_array(int *arr);
 void	print_struct(t_block *head);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lost_and_found.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/24 13:54:22 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 00:37:54 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-static void	push_top_left(int *arr)
+void	push_top_left(int *arr)
 {
 	int	row_min;
 	int	col_min;
