@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	fillit(fd);
 	if (close(fd) == -1 && error_handle())
 		return (-1);
-	ft_putendl("----BEFORE SHUTTING DOWN MAIN.C----");
-	system("leaks fillit");
+	//ft_putendl("----BEFORE SHUTTING DOWN MAIN.C----");
+	//system("leaks fillit");
 	return (0);
 }

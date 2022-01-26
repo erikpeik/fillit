@@ -122,7 +122,7 @@ int	*lost_and_found(const int fd)
 	map = fill_map(fd);
 	if (map == NULL)
 		return (NULL);
-	print_map(map);
+//	print_map(map);
 	if (validate_map((const char **) map) < 0)
 		exit(5);
 	if (validate_tetrimino((const char **) map) < 6)

@@ -6,12 +6,28 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 13:13:39 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/25 14:03:10 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/26 15:44:46 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+void	place(t_block *tet, int ***map, int n)
+{
+	int	row;
+	int	col;
+	int	i;
+
+	i = 0;
+	while (i < ARR_LEN)
+	{
+		row = (tet->pos)[i];
+		col = (tet->pos)[i + 1];
+		(*map)[row][col] = n;
+		i += 2;
+	}
+}
 
 void	move_left_and_down(int *pos)
 {

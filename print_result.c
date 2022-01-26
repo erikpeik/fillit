@@ -33,4 +33,5 @@ void	print_result(int **map, size_t n)
 		ft_putchar('\n');
 		row++;
 	}
+	ft_putchar('\n');
 }

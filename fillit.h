@@ -6,7 +6,7 @@
 /*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/26 13:03:35 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/26 16:36:27 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_block
 }					t_block;
 
 int		fillit(const int fd);
-void	solver(t_block *tet, int ***map, size_t size);
+int		solver(t_block *tet, int ***map, size_t *size);
 
 void	free_map(void **ar, size_t n);
 void	free_blocks(t_block **abl);
@@ -45,6 +45,10 @@ void	block_set_attributes(t_block **head);
 int		**create_map(size_t size);
 int		**recreate_map(int **map, size_t size);
 size_t	map_min_size(t_block *head);
+
+void	move_right(int *pos);
+void	move_left_and_down(int *pos);
+void	place(t_block *tet, int ***map, int n);
 
 void	print_int_array(int *arr);
 void	print_struct(t_block *head);
