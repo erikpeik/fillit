@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:17:19 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/25 15:18:30 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/26 13:03:51 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	solver(t_block *tet, int ***map, size_t size)
 	if (ret == -121 && tet->n == 1)
 	{
 		*map = recreate_map(*map, size + 1);
+		ft_putendl("----AFTER MALLOCING A BIGGER MAP----");	//
+		system("leaks fillit");								//
 		solver(tet, map, size + 1);
 	}
 }
