@@ -6,40 +6,12 @@
 /*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/27 09:25:10 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 15:46:30 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
-
-void	move_top_left(int *arr)
-{
-	int	row_min;
-	int	col_min;
-	int	i;
-
-	row_min = FOUR;
-	col_min = FOUR;
-	i = 0;
-	while (i < ARR_LEN)
-	{
-		if (i % 2 == 0 && arr[i] < row_min)
-			row_min = arr[i];
-		else if (i % 2 != 0 && arr[i] < col_min)
-			col_min = arr[i];
-		i++;
-	}
-	i = 0;
-	while (i < ARR_LEN)
-	{
-		if (i % 2 == 0)
-			arr[i] -= row_min;
-		else
-			arr[i] -= col_min;
-		i++;
-	}
-}
 
 static int	*find_coordinates(const char **map)
 {
@@ -128,7 +100,7 @@ int	*lost_and_found(const int fd)
 	if (validate_tetrimino((const char **) map) < 6)
 		exit(6);
 	pos = find_coordinates((const char **) map);
-	move_top_left(pos);
+	move_top_left(pos, FOUR);
 	free_map((void **) map, FOUR);
 	return (pos);
 }
