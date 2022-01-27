@@ -6,14 +6,14 @@
 /*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/27 00:37:54 by emende           ###   ########.fr       */
+/*   Updated: 2022/01/27 09:25:10 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-void	push_top_left(int *arr)
+void	move_top_left(int *arr)
 {
 	int	row_min;
 	int	col_min;
@@ -128,7 +128,7 @@ int	*lost_and_found(const int fd)
 	if (validate_tetrimino((const char **) map) < 6)
 		exit(6);
 	pos = find_coordinates((const char **) map);
-	push_top_left(pos);
+	move_top_left(pos);
 	free_map((void **) map, FOUR);
 	return (pos);
 }
