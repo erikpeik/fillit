@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/27 09:25:34 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 15:48:42 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int		**recreate_map(int **map, size_t size);
 size_t	map_min_size(t_block *head);
 
 void	move_right(int *pos);
-void	move_left_and_down(int *pos);
+void	move_left_and_down(int *pos, int max);
 void	place(t_block *tet, int ***map, int n);
-void	move_top_left(int *arr);
+void	move_top_left(int *arr, int max);
 
 void	print_int_array(int *arr);
 void	print_struct(t_block *head);
