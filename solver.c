@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:17:19 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/27 10:44:38 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 15:56:06 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ int	solver(t_block *tet, int ***map, size_t *size)
 	{
 		if (ret == 1)
 		{
-			ft_putstr("placing:  ");
-			ft_putchar((char)( tet->n + 64));
-			ft_putchar('\n');
+//			ft_putstr("placing:  ");
+//			ft_putchar((char )(tet->n + 64));
+//			ft_putchar('\n');
 			place(tet, map, tet->n);
-			print_result(*map, *size);
+//			print_result(*map, *size);
 			if (solver(tet->next, map, size) == 1)
 				return (1);
 			else
 			{
-				ft_putstr("removing: ");
-				ft_putchar((char)( tet->n + 64));
-				ft_putchar('\n');
+//				ft_putstr("removing: ");
+//				ft_putchar((char )(tet->n + 64));
+//				ft_putchar('\n');
 				place(tet, map, 0);
 				ret = does_it_fit(tet, *map, *size);
 			}
@@ -65,10 +65,10 @@ int	solver(t_block *tet, int ***map, size_t *size)
 		if (ret != -120)
 			move_right(tet->pos);
 		else
-			move_left_and_down(tet->pos);
+			move_left_and_down(tet->pos, (int )*size);
 		ret = does_it_fit(tet, *map, *size);
 	}
-	move_top_left(tet->pos);
+	move_top_left(tet->pos, (int )*size);
 	if (ret == -121 && tet->n == 1)
 	{
 		*map = recreate_map(*map, *size + 1);
