@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/26 15:54:49 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 09:40:57 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	fillit(const int fd)
 	size = map_min_size(head);
 	map = create_map(size);
 
-	print_result(map, size);
-	ft_putchar('\n');
+//	print_result(map, size);
+//	ft_putchar('\n');
 	solver(head, &map, &size);
 //	ft_putendl("----AFTER EXITING SOLVER.C----");	//
 //	system("leaks fillit");							//
