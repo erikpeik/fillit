@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emende <emende@student.hive.fi>            +#+  +:+       +#+         #
+#    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/26 15:45:26 by altikka          ###   ########.fr        #
+#    Updated: 2022/01/27 16:59:51 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,9 @@ INCS = -I libft/
 FLAGS = -Wall -Wextra -Werror -Wconversion
 
 LIB_PATH = -L libft/ -lft
-
-SRCS = main.c fillit.c lost_and_found.c block_new.c block_append.c \
-	   block_set_attributes.c print_factory.c validation_station.c \
-	   create_map.c map_min_size.c solver.c print_result.c move.c \
+SRCS = main.c fillit.c lost_and_found.c block_park.c print_factory.c \
+	   validation_station.c create_map.c map_min_size.c solver.c \
+	   print_result.c move.c
 
 OBJS = $(SRCS:.c=.o)
 

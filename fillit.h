@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
+/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/27 15:48:42 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/27 17:04:25 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		validate_tetrimino(const char **map);
 
 t_block	*block_new(const int *pos);
 void	block_append(t_block **head, const int *pos);
-void	block_set_attributes(t_block **head);
+void	block_ordinal(t_block **head);
 
 int		**create_map(size_t size);
 int		**recreate_map(int **map, size_t size);

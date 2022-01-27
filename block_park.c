@@ -1,17 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   block_new.c                                        :+:      :+:    :+:   */
+/*   block_park.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka & emende  <@student.42.fr>         +#+  +:+       +#+        */
+/*   By: altikka & emende  <@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/19 16:52:44 by emende            #+#    #+#             */
-/*   Updated: 2022/01/20 15:05:37 by altikka          ###   ########.fr       */
+/*   Created: 2022/01/27 16:37:10 by emende            #+#    #+#             */
+/*   Updated: 2022/01/27 16:47:18 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+void	free_blocks(t_block **abl)
+{
+	if ((*abl)->next != NULL)
+		free_blocks(&(*abl)->next);
+	free((*abl)->pos);
+	free(*abl);
+}
 
 t_block	*block_new(const int *pos)
 {
@@ -39,4 +47,31 @@ t_block	*block_new(const int *pos)
 	new->n = 0;
 	new->next = NULL;
 	return (new);
+}
+
+void	block_append(t_block **head, const int *pos)
+{
+	t_block	*temp;
+	t_block	*new;
+
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+	new = block_new(pos);
+	temp->next = new;
+}
+
+void	block_ordinal(t_block **head)
+{
+	t_block	*temp;
+	int		n;
+
+	temp = *head;
+	n = 1;
+	while (temp)
+	{
+		temp->n = n;
+		temp = temp->next;
+		n++;
+	}
 }
