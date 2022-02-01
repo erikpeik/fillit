@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   block_park.c                                       :+:      :+:    :+:   */
+/*   block_party.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: altikka & emende  <@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:37:10 by emende            #+#    #+#             */
-/*   Updated: 2022/01/27 16:47:18 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/01 15:13:26 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,33 @@ void	free_blocks(t_block **abl)
 		free_blocks(&(*abl)->next);
 	free((*abl)->pos);
 	free(*abl);
+}
+
+void	block_ordinal(t_block **head)
+{
+	t_block	*temp;
+	int		n;
+
+	temp = *head;
+	n = 1;
+	while (temp)
+	{
+		temp->n = n;
+		temp = temp->next;
+		n++;
+	}
+}
+
+void	block_append(t_block **head, const int *pos)
+{
+	t_block	*temp;
+	t_block	*new;
+
+	temp = *head;
+	while (temp->next != NULL)
+		temp = temp->next;
+	new = block_new(pos);
+	temp->next = new;
 }
 
 t_block	*block_new(const int *pos)
@@ -47,31 +74,4 @@ t_block	*block_new(const int *pos)
 	new->n = 0;
 	new->next = NULL;
 	return (new);
-}
-
-void	block_append(t_block **head, const int *pos)
-{
-	t_block	*temp;
-	t_block	*new;
-
-	temp = *head;
-	while (temp->next != NULL)
-		temp = temp->next;
-	new = block_new(pos);
-	temp->next = new;
-}
-
-void	block_ordinal(t_block **head)
-{
-	t_block	*temp;
-	int		n;
-
-	temp = *head;
-	n = 1;
-	while (temp)
-	{
-		temp->n = n;
-		temp = temp->next;
-		n++;
-	}
 }

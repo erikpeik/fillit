@@ -6,7 +6,7 @@
 #    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/01/27 16:59:51 by emende           ###   ########.fr        #
+#    Updated: 2022/02/01 15:09:26 by altikka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INCS = -I libft/
 FLAGS = -Wall -Wextra -Werror -Wconversion
 
 LIB_PATH = -L libft/ -lft
-SRCS = main.c fillit.c lost_and_found.c block_park.c print_factory.c \
+SRCS = main.c fillit.c lost_and_found.c block_party.c print_factory.c \
 	   validation_station.c create_map.c map_min_size.c solver.c \
 	   print_result.c move.c
 
