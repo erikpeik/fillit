@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lost_and_found.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
+/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/01 15:37:34 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/01 19:46:51 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,66 +42,68 @@ static int	*find_coordinates(const char **map)
 	return (array);
 }
 
-static void	get_fifth_line(const int fd)
+static int	get_fifth_line(const int fd)
 {
 	char	*line;
 	int		ret;
 
 	ret = get_next_line(fd, &line);
 	if (ret < 0)
-		exit(7);
+		return (-1);
 	if (ret == 0 && line == NULL)
-		exit(8);
+		return (-1);
 	if (*line != '\0')
 	{
 		ft_strdel(&line);
-		exit(4);
+		return (-1);
 	}
-	free(line);
+	ft_strdel(&line);
+	return (1);
 }
 
-static char	**fill_map(const int fd)
+static int	fill_map(const int fd, char ***map)
 {
-	char	**map;
 	char	*line;
 	int		i;
+	int		ret;
 
-	map = (char **)malloc(sizeof(*map) * FOUR + 1);
-	if (map == NULL)
-		exit(2);
+	(*map) = (char **)malloc(sizeof(*map) * FOUR + 1);
+	if ((*map) == NULL)
+		return (-1);
 	i = 0;
 	while (i < FOUR)
 	{
-		if (get_next_line(fd, &line) < 1 && i == 0)
-		{
-			free(map);
-			return (NULL);
-		}
-		map[i] = ft_strdup(line);
-		if (map[i] == NULL)
-			exit(3);
+		ret = get_next_line(fd, &line);
+		if (ret < 1 && i == 0)
+			return (0);
+		if (ret < 1)
+			return (-1);
+		(*map)[i] = ft_strdup(line);
 		ft_strdel(&line);
+		if ((*map)[i] == NULL)
+			return (-1);
 		i++;
 	}
-	get_fifth_line(fd);
-	map[i] = NULL;
-	return (map);
+	if (get_fifth_line(fd) == -1)
+		return (-1);
+	(*map)[i] = NULL;
+	return (1);
 }
 
-int	*lost_and_found(const int fd)
+int	lost_and_found(const int fd, int **pos)
 {
 	char	**map;
-	int		*pos;
+	int		ret;
 
-	map = fill_map(fd);
-	if (map == NULL)
-		return (NULL);
+	ret = fill_map(fd, &map);
+	if (ret == -1 || ret == 0)
+		return (ret);
 	if (validate_map((const char **) map) < 0)
-		exit(5);
+		return (-1);
 	if (validate_tetrimino((const char **) map) < 6)
-		exit(6);
-	pos = find_coordinates((const char **) map);
-	move_top_left(pos, FOUR);
+		return (-1);
+	(*pos) = find_coordinates((const char **) map);
+	move_top_left((*pos), FOUR);
 	free_map((void **) map, FOUR);
-	return (pos);
+	return (1);
 }
