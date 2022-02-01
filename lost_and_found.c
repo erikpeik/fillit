@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/01 13:16:18 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:37:34 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int	*lost_and_found(const int fd)
 	map = fill_map(fd);
 	if (map == NULL)
 		return (NULL);
-//	print_map(map);
 	if (validate_map((const char **) map) < 0)
 		exit(5);
 	if (validate_tetrimino((const char **) map) < 6)

@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:59:03 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/27 15:56:20 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/01 15:31:21 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	print_result(int **map, size_t n)
 		ft_putchar('\n');
 		row++;
 	}
-//	ft_putchar('\n');
 }
