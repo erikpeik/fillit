@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/01/27 15:46:30 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/01 13:16:18 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	get_fifth_line(const int fd)
 	ret = get_next_line(fd, &line);
 	if (ret < 0)
 		exit(7);
+	if (ret == 0 && line == NULL)
+		exit(8);
 	if (*line != '\0')
 	{
 		ft_strdel(&line);
