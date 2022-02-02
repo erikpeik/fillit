@@ -6,7 +6,7 @@
 /*   By: altikka & emende  <@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:37:10 by emende            #+#    #+#             */
-/*   Updated: 2022/02/01 15:13:26 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:50:21 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ t_block	*block_new(const int *pos)
 		}
 		ft_memcpy(new->pos, pos, (sizeof(int) * ARR_LEN));
 	}
-	new->width = 0;
-	new->height = 0;
 	new->n = 0;
 	new->next = NULL;
 	return (new);

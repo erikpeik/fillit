@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/27 17:04:25 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/01 18:47:12 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,17 @@
 typedef struct s_block
 {
 	int				*pos;
-	int				width;
-	int				height;
 	int				n;
 	struct s_block	*next;
 }					t_block;
 
-int		fillit(const int fd);
+int		fillit(const int fd, int ***map, size_t size);
 int		solver(t_block *tet, int ***map, size_t *size);
 
 void	free_map(void **ar, size_t n);
 void	free_blocks(t_block **abl);
 
-int		*lost_and_found(const int fd);
+int		lost_and_found(const int fd, int **pos);
 int		validate_map(const char **map);
 int		validate_tetrimino(const char **map);
 
@@ -51,9 +49,6 @@ void	move_left_and_down(int *pos, int max);
 void	place(t_block *tet, int ***map, int n);
 void	move_top_left(int *arr, int max);
 
-void	print_int_array(int *arr);
-void	print_struct(t_block *head);
-void	print_map(char **map);
 void	print_result(int **map, size_t n);
 
 #endif
