@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/01 18:47:12 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/02 15:04:00 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_block
 int		fillit(const int fd, int ***map, size_t size);
 int		solver(t_block *tet, int ***map, size_t *size);
 
-void	free_map(void **ar, size_t n);
+void	free_map(void **arr, size_t n);
 void	free_blocks(t_block **abl);
 
 int		lost_and_found(const int fd, int **pos);
@@ -37,7 +37,7 @@ int		validate_map(const char **map);
 int		validate_tetrimino(const char **map);
 
 t_block	*block_new(const int *pos);
-void	block_append(t_block **head, const int *pos);
+int		block_append(t_block **head, const int *pos);
 void	block_ordinal(t_block **head);
 
 int		**create_map(size_t size);
