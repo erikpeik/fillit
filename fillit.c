@@ -6,71 +6,52 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 16:29:40 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:26:02 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-int	fillit(const int fd, int ***map, size_t size)
+static void	get_blocks(const int fd, t_block **head)
 {
-	int		*pos;
-	int		ret;
-	t_block	*head;
-	size_t	count;
+	int	*pos;
+	int	ret;
+	int	count;
 
 	pos = NULL;
 	ret = lost_and_found(fd, &pos);
-	if (ret == -1)
-	{
-		ft_putendl("error");
-		exit(664);
-	}
-	head = block_new((const int *) pos);
-	if (head == NULL)
-	{
-		ft_memdel((void **) &pos);
-		ft_putendl("error");
-		exit(665);
-	}
+	if (ret == -1 && err_exit())
+		exit(1);
+	*head = block_new((const int *) pos);
+	if (*head == NULL && err_pos(pos))
+		exit(1);
 	ft_memdel((void **) &pos);
 	count = 1;
 	while (ret != 0)
 	{
-		if (count >= 26)
-		{
-			free_blocks(&head);
-			ft_putendl("error");
-			exit(666);
-		}
+		if (count >= 26 && err_blocks(*head))
+			exit(1);
 		ret = lost_and_found(fd, &pos);
-		if (ret == -1)
-		{
-			ft_memdel((void **) &pos);
-			free_blocks(&head);
-			ft_putendl("error");
-			exit(667);
-		}
-		if (block_append(&head, (const int *) pos) == -1)
-		{
-			ft_memdel((void **) &pos);
-			free_blocks(&head);
-			ft_putendl("error");
-			exit(668);
-		}
+		if (ret == -1 && err_all(pos, *head))
+			exit(1);
+		if (block_append(head, (const int *) pos) == -1 && err_all(pos, *head))
+			exit(1);
 		ft_memdel((void **) &pos);
 		count++;
 	}
+}
+
+int	fillit(const int fd, int ***map, size_t size)
+{
+	t_block	*head;
+
+	get_blocks(fd, &head);
 	block_ordinal(&head);
 	size = map_min_size(head);
 	(*map) = create_map(size);
-	if (*map == NULL)
-	{
-		free_blocks(&head);
-		ft_putendl("error");
-		exit(669);
-	}
+	if (*map == NULL && err_blocks(head))
+		exit(1);
 	solver(head, map, &size, 0);
 	print_result(*map, size);
 	free_map((void **) *map, size);
