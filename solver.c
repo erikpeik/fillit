@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:17:19 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 15:32:16 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:30:34 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,20 @@ static int	does_it_fit(t_block *tet, int **map, size_t size)
 	return (1);
 }
 
-int	solver(t_block *tet, int ***map, size_t *size)
+static void	bigger_map(t_block *tet, int ***map, size_t *size)
 {
-	int	ret;
+	*map = recreate_map(*map, *size + 1);
+	if (*map == NULL)
+	{
+		free_blocks(&tet);
+		ft_putendl("error");
+		exit(1);
+	}
+	*size += 1;
+}
 
+int	solver(t_block *tet, int ***map, size_t *size, int ret)
+{
 	if (tet == NULL)
 		return (1);
 	ret = does_it_fit(tet, *map, *size);
@@ -47,10 +57,9 @@ int	solver(t_block *tet, int ***map, size_t *size)
 		if (ret == 1)
 		{
 			place(tet, map, tet->n);
-			if (solver(tet->next, map, size) == 1)
+			if (solver(tet->next, map, size, ret) == 1)
 				return (1);
-			else
-				place(tet, map, 0);
+			place(tet, map, 0);
 		}
 		if (ret != -120)
 			move_right(tet->pos);
@@ -61,15 +70,8 @@ int	solver(t_block *tet, int ***map, size_t *size)
 	move_top_left(tet->pos, (int )*size);
 	if (ret == -121 && tet->n == 1)
 	{
-		*map = recreate_map(*map, *size + 1);
-		if(*map == NULL)
-		{
-			free_blocks(&tet);
-			ft_putendl("error");
-			exit(1);
-		}
-		*size += 1;
-		solver(tet, map, size);
-	}	
+		bigger_map(tet, map, size);
+		solver(tet, map, size, ret);
+	}
 	return (0);
 }
