@@ -6,7 +6,7 @@
 /*   By: altikka & emende  <@student.hive.fi>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:37:10 by emende            #+#    #+#             */
-/*   Updated: 2022/02/01 16:50:21 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/02 15:02:53 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	block_ordinal(t_block **head)
 	}
 }
 
-void	block_append(t_block **head, const int *pos)
+int	block_append(t_block **head, const int *pos)
 {
 	t_block	*temp;
 	t_block	*new;
@@ -45,7 +45,10 @@ void	block_append(t_block **head, const int *pos)
 	while (temp->next != NULL)
 		temp = temp->next;
 	new = block_new(pos);
+	if (new == NULL)
+		return (-1);
 	temp->next = new;
+	return (0);
 }
 
 t_block	*block_new(const int *pos)
