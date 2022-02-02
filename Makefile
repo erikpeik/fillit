@@ -6,7 +6,7 @@
 #    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/02/02 15:33:07 by altikka          ###   ########.fr        #
+#    Updated: 2022/02/02 17:01:04 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -Wconversion -g
 
 LIB_PATH = -L libft/ -lft
 SRCS = main.c fillit.c lost_and_found.c block_party.c validation_station.c \
-	   world_of_maps.c solver.c print_result.c move.c
+	   world_of_maps.c solver.c print_result.c move.c error_handle.c
 
 OBJS = $(SRCS:.c=.o)
 
