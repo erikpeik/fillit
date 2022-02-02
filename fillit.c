@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 15:10:17 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 16:29:40 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	fillit(const int fd, int ***map, size_t size)
 		ft_putendl("error");
 		exit(669);
 	}
-	solver(head, map, &size);
+	solver(head, map, &size, 0);
 	print_result(*map, size);
 	free_map((void **) *map, size);
 	free_blocks(&head);
