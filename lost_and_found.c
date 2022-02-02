@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/01 19:46:51 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/02 14:21:03 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static int	get_fifth_line(const int fd)
 	int		ret;
 
 	ret = get_next_line(fd, &line);
-	if (ret < 0)
+	if (line == NULL || ret < 0)
 		return (-1);
-	if (ret == 0 && line == NULL)
-		return (-1);
+	if (ret == 0 && *line == '\0')
+		return (0);
 	if (*line != '\0')
 	{
 		ft_strdel(&line);
@@ -74,8 +74,6 @@ static int	fill_map(const int fd, char ***map)
 	while (i < FOUR)
 	{
 		ret = get_next_line(fd, &line);
-		if (ret < 1 && i == 0)
-			return (0);
 		if (ret < 1)
 			return (-1);
 		(*map)[i] = ft_strdup(line);
@@ -84,10 +82,9 @@ static int	fill_map(const int fd, char ***map)
 			return (-1);
 		i++;
 	}
-	if (get_fifth_line(fd) == -1)
-		return (-1);
+	ret = get_fifth_line(fd);
 	(*map)[i] = NULL;
-	return (1);
+	return (ret);
 }
 
 int	lost_and_found(const int fd, int **pos)
@@ -96,7 +93,7 @@ int	lost_and_found(const int fd, int **pos)
 	int		ret;
 
 	ret = fill_map(fd, &map);
-	if (ret == -1 || ret == 0)
+	if (ret == -1)
 		return (ret);
 	if (validate_map((const char **) map) < 0)
 		return (-1);
@@ -105,5 +102,5 @@ int	lost_and_found(const int fd, int **pos)
 	(*pos) = find_coordinates((const char **) map);
 	move_top_left((*pos), FOUR);
 	free_map((void **) map, FOUR);
-	return (1);
+	return (ret);
 }
