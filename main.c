@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:59:23 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/01 18:24:55 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/02 17:26:12 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ int	main(int argc, char **argv)
 	fillit(fd, &map, size);
 	if (close(fd) == -1 && error_handle())
 		return (-1);
-//	ft_putendl("----BEFORE SHUTTING DOWN MAIN.C----");
-//	system("leaks fillit");
 	return (0);
 }
