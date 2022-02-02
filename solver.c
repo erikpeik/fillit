@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:17:19 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/28 16:17:57 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 15:32:16 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ int	solver(t_block *tet, int ***map, size_t *size)
 	if (ret == -121 && tet->n == 1)
 	{
 		*map = recreate_map(*map, *size + 1);
+		if(*map == NULL)
+		{
+			free_blocks(&tet);
+			ft_putendl("error");
+			exit(1);
+		}
 		*size += 1;
 		solver(tet, map, size);
 	}	
