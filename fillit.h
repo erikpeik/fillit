@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 16:30:21 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:10:31 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,10 @@ void	place(t_block *tet, int ***map, int n);
 void	move_top_left(int *arr, int max);
 
 void	print_result(int **map, size_t n);
+
+int		err_all(int *pos, t_block *ab);
+int		err_blocks(t_block *ab);
+int		err_pos(int *pos);
+int		err_exit(void);
 
 #endif
