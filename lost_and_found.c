@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/02 14:21:03 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 15:33:56 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	*find_coordinates(const char **map)
 
 	array = (int *)malloc(sizeof(*array) * ARR_LEN);
 	if (array == NULL)
-		exit(1);
+		return (NULL);
 	i = 0;
 	row = 0;
 	while (map[row])
@@ -100,6 +100,8 @@ int	lost_and_found(const int fd, int **pos)
 	if (validate_tetrimino((const char **) map) < 6)
 		return (-1);
 	(*pos) = find_coordinates((const char **) map);
+	if (*pos == NULL)
+		return (-1);
 	move_top_left((*pos), FOUR);
 	free_map((void **) map, FOUR);
 	return (ret);
