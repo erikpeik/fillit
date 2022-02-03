@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 17:10:31 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/02 18:06:47 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_block
 int		fillit(const int fd, int ***map, size_t size);
 int		solver(t_block *tet, int ***map, size_t *size, int ret);
 
-void	free_map(void **arr, size_t n);
+int		free_map(void **arr, size_t n);
+int		free_strarr(char **arr);
 void	free_blocks(t_block **abl);
 
 int		lost_and_found(const int fd, int **pos);
