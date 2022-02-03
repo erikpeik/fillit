@@ -6,14 +6,14 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:59:03 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/01 15:31:21 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 16:26:03 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-void	print_result(int **map, size_t n)
+void	print_result(const int **map, size_t n)
 {
 	size_t	row;
 	size_t	col;
