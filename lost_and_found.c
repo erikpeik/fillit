@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/03 13:59:45 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 14:27:11 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static int	fill_map(const int fd, char ***map)
 	size_t	i;
 	int		ret;
 
-	(*map) = (char **)malloc(sizeof(*map) * FOUR + 1);
+	(*map) = (char **)malloc(sizeof(*map) * (FOUR + 1));
 	if ((*map) == NULL)
 		return (-1);
 	i = 0;
@@ -113,7 +113,10 @@ int	lost_and_found(const int fd, int **pos)
 	}
 	(*pos) = find_coordinates((const char **) map);
 	if (*pos == NULL)
+	{
+		free_map((void **) map, FOUR);
 		return (-1);
+	}
 	move_top_left((*pos), FOUR);
 	free_map((void **) map, FOUR);
 	return (ret);
