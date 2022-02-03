@@ -6,7 +6,7 @@
 #    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/02/02 17:01:04 by emende           ###   ########.fr        #
+#    Updated: 2022/02/03 18:21:42 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 
 INCS = -I libft/
 
-FLAGS = -Wall -Wextra -Werror -Wconversion -g
+FLAGS = -Wall -Wextra -Werror
 
 LIB_PATH = -L libft/ -lft
 SRCS = main.c fillit.c lost_and_found.c block_party.c validation_station.c \
