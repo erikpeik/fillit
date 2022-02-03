@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_of_maps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:40:02 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/03 13:04:48 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/03 17:29:48 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,6 @@ size_t	map_min_size(t_block *head)
 		temp = temp->next;
 	res = (size_t) ft_sqrt((int ) temp->n * FOUR);
 	return (res);
-}
-
-int	free_strarr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	arr = NULL;
-	return (1);
 }
 
 int	free_map(void **arr, size_t n)
