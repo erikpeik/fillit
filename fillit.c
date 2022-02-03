@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 16:12:13 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/03 14:43:40 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 16:44:28 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	get_blocks(const int fd, t_block **head)
 		exit(1);
 	ft_memdel((void **) &pos);
 	count = 1;
-	while (ret != 0)
+	while (ret)
 	{
 		if (count >= 26 && err_blocks(*head))
 			exit(1);
@@ -53,7 +53,7 @@ int	fillit(const int fd, int ***map, size_t size)
 	if (*map == NULL && err_blocks(head))
 		exit(1);
 	solver(head, map, &size, 0);
-	print_result(*map, size);
+	print_result((const int **) *map, size);
 	free_map((void **) *map, size);
 	free_blocks(&head);
 	return (0);
