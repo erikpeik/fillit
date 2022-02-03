@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 13:13:39 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/27 15:50:31 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 16:41:03 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	move_right(int *pos)
 	}
 }
 
-void	move_top_left(int *arr, int max)
+void	move_top_left(int *pos, int max)
 {
 	int	row_min;
 	int	col_min;
@@ -77,19 +77,19 @@ void	move_top_left(int *arr, int max)
 	i = 0;
 	while (i < ARR_LEN)
 	{
-		if (i % 2 == 0 && arr[i] < row_min)
-			row_min = arr[i];
-		else if (i % 2 != 0 && arr[i] < col_min)
-			col_min = arr[i];
+		if (i % 2 == 0 && pos[i] < row_min)
+			row_min = pos[i];
+		else if (i % 2 != 0 && pos[i] < col_min)
+			col_min = pos[i];
 		i++;
 	}
 	i = 0;
 	while (i < ARR_LEN)
 	{
 		if (i % 2 == 0)
-			arr[i] -= row_min;
+			pos[i] -= row_min;
 		else
-			arr[i] -= col_min;
+			pos[i] -= col_min;
 		i++;
 	}
 }
