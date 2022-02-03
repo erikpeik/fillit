@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:50:52 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/03 16:26:02 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 17:31:22 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		fillit(const int fd, int ***map, size_t size);
 int		solver(t_block *tet, int ***map, size_t *size, int ret);
 
 int		free_map(void **arr, size_t n);
-int		free_strarr(char **arr);
 void	free_blocks(t_block **abl);
 
 int		lost_and_found(const int fd, int **pos);
@@ -45,10 +44,10 @@ int		**create_map(size_t size);
 int		**recreate_map(int **map, size_t size);
 size_t	map_min_size(t_block *head);
 
+void	move_top_left(int *pos, int max);
 void	move_right(int *pos);
 void	move_left_and_down(int *pos, int max);
 void	place(t_block *tet, int ***map, int n);
-void	move_top_left(int *arr, int max);
 
 void	print_result(const int **map, size_t n);
 
