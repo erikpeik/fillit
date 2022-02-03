@@ -6,7 +6,7 @@
 /*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/03 14:27:11 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 14:41:00 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	lost_and_found(const int fd, int **pos)
 	ret = fill_map(fd, &map);
 	if (ret == -1)
 		return (ret);
-	if (validate_map((const char **) map) < 0 )
+	if (validate_map((const char **) map) < 0)
 	{
 		free_strarr(map);
 		return (-1);
