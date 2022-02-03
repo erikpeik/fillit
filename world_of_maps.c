@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_of_maps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:40:02 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 18:05:59 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/03 13:04:48 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	**create_map(size_t size)
 		map[row] = (int *)malloc(sizeof(**map) * (size));
 		if (map[row] == NULL)
 		{
-			free_map((void **) map, row + 1);
+			free_map((void **) map, row);
 			return (NULL);
 		}
 		ft_memset(map[row], 0, sizeof(**map) * (size));
