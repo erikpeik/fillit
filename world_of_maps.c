@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 11:40:02 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 15:33:53 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 18:05:59 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	map_min_size(t_block *head)
 	return (res);
 }
 
-void	free_strarr(char **arr)
+int	free_strarr(char **arr)
 {
 	int	i;
 
@@ -37,9 +37,10 @@ void	free_strarr(char **arr)
 	}
 	free(arr);
 	arr = NULL;
+	return (1);
 }
 
-void	free_map(void **arr, size_t n)
+int	free_map(void **arr, size_t n)
 {
 	size_t	i;
 
@@ -51,6 +52,7 @@ void	free_map(void **arr, size_t n)
 	}
 	free(arr);
 	arr = NULL;
+	return (1);
 }
 
 int	**recreate_map(int **map, size_t size)
