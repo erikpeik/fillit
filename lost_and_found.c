@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lost_and_found.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emende <emende@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/03 14:41:00 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/03 17:29:14 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,12 @@ int	lost_and_found(const int fd, int **pos)
 		return (ret);
 	if (validate_map((const char **) map) < 0)
 	{
-		free_strarr(map);
+		free_map((void **) map, FOUR);
 		return (-1);
 	}
 	if (validate_tetrimino((const char **) map) < 6)
 	{
-		free_strarr(map);
+		free_map((void **) map, FOUR);
 		return (-1);
 	}
 	(*pos) = find_coordinates((const char **) map);
