@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:17:19 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/02 16:30:34 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:59:24 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,8 @@ static int	does_it_fit(t_block *tet, int **map, size_t size)
 static void	bigger_map(t_block *tet, int ***map, size_t *size)
 {
 	*map = recreate_map(*map, *size + 1);
-	if (*map == NULL)
-	{
-		free_blocks(&tet);
-		ft_putendl("error");
+	if (*map == NULL && err_blocks(tet))
 		exit(1);
-	}
 	*size += 1;
 }
 
