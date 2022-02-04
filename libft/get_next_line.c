@@ -6,19 +6,22 @@
 /*   By: altikka <altikka@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:43:17 by altikka           #+#    #+#             */
-/*   Updated: 2022/01/12 16:33:02 by altikka          ###   ########.fr       */
+/*   Updated: 2022/01/21 13:02:01 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	buffer_to_line(char **line, char *buf)
+static int	buffer_to_line(char **line, char *buf)
 {
 	char	*join;
 
 	join = ft_strjoin(*line, buf);
+	if (join == NULL)
+		return (-1);
 	ft_strdel(line);
 	*line = join;
+	return (1);
 }
 
 static int	read_buffer(int const fd, char **line, char **arr)
@@ -33,12 +36,16 @@ static int	read_buffer(int const fd, char **line, char **arr)
 		if (temp != NULL)
 		{
 			temp[0] = '\0';
-			buffer_to_line(line, buf);
+			if (buffer_to_line(line, buf) == -1)
+				return (-1);
 			temp++;
 			arr[fd] = ft_strdup(temp);
+			if (arr[fd] == NULL)
+				return (-1);
 			return (1);
 		}
-		buffer_to_line(line, buf);
+		if (buffer_to_line(line, buf) == -1)
+			return (-1);
 		ft_bzero(buf, BUFF_SIZE + 1);
 	}
 	if (*line == NULL || *line[0] == '\0')
@@ -57,12 +64,18 @@ static int	check_array(int const fd, char **line, char **arr)
 	if (temp == NULL)
 	{
 		*line = ft_strdup(arr[fd]);
+		if (*line == NULL)
+			return (-1);
 		ft_strdel(&arr[fd]);
 		return (read_buffer(fd, line, arr));
 	}
 	*line = ft_strndup(arr[fd], (size_t)(temp - arr[fd]));
+	if (*line == NULL)
+		return (-1);
 	temp++;
 	next = ft_strdup(temp);
+	if (next == NULL)
+		return (-1);
 	ft_strdel(&arr[fd]);
 	arr[fd] = next;
 	return (1);
