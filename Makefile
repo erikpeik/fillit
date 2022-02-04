@@ -6,7 +6,7 @@
 #    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/02/04 10:47:17 by emende           ###   ########.fr        #
+#    Updated: 2022/02/04 14:45:23 by altikka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,11 +67,13 @@ fclean: clean
 
 re: fclean all
 
+.PHONY: all clean fclean re
+
 emoji:
 	@echo "      🆘              🆔        "
-	@echo "✅✅  🆘  🆚    🚾    🆔        "
-	@echo "✅    🆘  🆚    🚾    🆔  🚮🚮🚮"
-	@echo "✅    🆘  🆚🆚  🚾🚾  🆔    🚮  "
+	@echo "✅✅  🆘  🆚    🛂    🆔        "
+	@echo "✅    🆘  🆚    🛂    🆔  🚮🚮🚮"
+	@echo "✅    🆘  🆚🆚  🛂🛂  🆔    🚮  "
 	@make -C libft/
 	@gcc -c $(FLAGS) $(INCS) $(SRCS) emoji_print.c
 	@gcc -o $(NAME) $(OBJS) emoji_print.o $(INCS) $(LIB_PATH)
@@ -83,9 +85,9 @@ emoji_clean:
 
 emoji_fclean: emoji_clean
 	@make -C libft/ fclean
-	@echo "$(WHITE)[FILLIT] $(RED)Removing binary file... 📎"
+	@echo "$(WHITE)[FILLIT] $(RED)Removing binary file... 🆘"
 	@rm -f $(NAME)
 
 emoji_re: emoji_fclean emoji
 
-.PHONY: all
+.PHONY: emoji emoji_clean emoji_fclean emoji_re
