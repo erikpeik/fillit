@@ -6,11 +6,12 @@
 #    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/02/04 14:45:23 by altikka          ###   ########.fr        #
+#    Updated: 2022/02/04 15:23:51 by altikka          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
+NAME_EMOJI = fillit_emoji
 
 INCS = -I libft/
 
@@ -49,7 +50,7 @@ $(NAME):
 	@echo "$(NCOLOR)"
 	@make -C libft/
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 27%"
-	gcc -c  $(FLAGS) $(INCS) $(SRCS) print_result.c
+	@gcc -c  $(FLAGS) $(INCS) $(SRCS) print_result.c
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 64%"
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 99%"
 	@gcc -o $(NAME) $(OBJS) print_result.o $(INCS) $(LIB_PATH)
@@ -69,14 +70,17 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-emoji:
+emoji: $(NAME_EMOJI)
+
+$(NAME_EMOJI):
 	@echo "      🆘              🆔        "
 	@echo "✅✅  🆘  🆚    🛂    🆔        "
 	@echo "✅    🆘  🆚    🛂    🆔  🚮🚮🚮"
 	@echo "✅    🆘  🆚🆚  🛂🛂  🆔    🚮  "
 	@make -C libft/
 	@gcc -c $(FLAGS) $(INCS) $(SRCS) emoji_print.c
-	@gcc -o $(NAME) $(OBJS) emoji_print.o $(INCS) $(LIB_PATH)
+	@gcc -o $(NAME_EMOJI) $(OBJS) emoji_print.o $(INCS) $(LIB_PATH)
+	@echo "$(WHITE)[FILLIT] $(GREEN)Compiled succesfully!"
 
 emoji_clean:
 	@make -C libft/ clean
@@ -86,7 +90,7 @@ emoji_clean:
 emoji_fclean: emoji_clean
 	@make -C libft/ fclean
 	@echo "$(WHITE)[FILLIT] $(RED)Removing binary file... 🆘"
-	@rm -f $(NAME)
+	@rm -f $(NAME_EMOJI)
 
 emoji_re: emoji_fclean emoji
 
