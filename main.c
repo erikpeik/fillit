@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 14:59:23 by altikka           #+#    #+#             */
-/*   Updated: 2022/02/03 16:56:25 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/04 17:23:37 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int	main(int argc, char **argv)
 	int		**map;
 	size_t	size;
 
-	if (argc != 2 && err_exit())
+	if (argc != 2)
+	{
+		ft_putendl("usage: ./fillit source_file");
 		return (-1);
-	fd = open(argv[1], O_RDWR);
+	}
+		fd = open(argv[1], O_RDWR);
 	if (fd == -1 && err_exit())
 		return (-1);
 	map = NULL;
