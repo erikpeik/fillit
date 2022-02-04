@@ -8,6 +8,7 @@
 *libft.a
 core
 fillit
+fillit_emoji
 .vscode/
 *.dSYM
 a.out
