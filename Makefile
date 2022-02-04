@@ -6,7 +6,7 @@
 #    By: altikka && emende <@student.hive.fi>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 17:52:29 by emende            #+#    #+#              #
-#    Updated: 2022/02/03 18:21:42 by emende           ###   ########.fr        #
+#    Updated: 2022/02/04 10:47:17 by emende           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 
 LIB_PATH = -L libft/ -lft
 SRCS = main.c fillit.c lost_and_found.c block_party.c validation_station.c \
-	   world_of_maps.c solver.c print_result.c move.c error_handle.c
+	   world_of_maps.c solver.c move.c error_handle.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -49,16 +49,16 @@ $(NAME):
 	@echo "$(NCOLOR)"
 	@make -C libft/
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 27%"
-	@gcc -c  $(FLAGS) $(INCS) $(SRCS)
+	gcc -c  $(FLAGS) $(INCS) $(SRCS) print_result.c
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 64%"
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiling 99%"
-	@gcc -o $(NAME) $(OBJS) $(INCS) $(LIB_PATH)
+	@gcc -o $(NAME) $(OBJS) print_result.o $(INCS) $(LIB_PATH)
 	@echo "$(WHITE)[FILLIT] $(GREEN)Compiled succesfully!"
 
 clean:
 	@make -C libft/ clean
 	@echo "$(WHITE)[FILLIT] $(RED)Removing object files..."
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) print_result.o
 
 fclean: clean
 	@make -C libft/ fclean
@@ -66,5 +66,26 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+emoji:
+	@echo "      🆘              🆔        "
+	@echo "✅✅  🆘  🆚    🚾    🆔        "
+	@echo "✅    🆘  🆚    🚾    🆔  🚮🚮🚮"
+	@echo "✅    🆘  🆚🆚  🚾🚾  🆔    🚮  "
+	@make -C libft/
+	@gcc -c $(FLAGS) $(INCS) $(SRCS) emoji_print.c
+	@gcc -o $(NAME) $(OBJS) emoji_print.o $(INCS) $(LIB_PATH)
+
+emoji_clean:
+	@make -C libft/ clean
+	@echo "$(WHITE)[FILLIT] $(RED)Removing object files... 🚮"
+	@rm -f $(OBJS) emoji_print.o
+
+emoji_fclean: emoji_clean
+	@make -C libft/ fclean
+	@echo "$(WHITE)[FILLIT] $(RED)Removing binary file... 📎"
+	@rm -f $(NAME)
+
+emoji_re: emoji_fclean emoji
 
 .PHONY: all
