@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/03 17:29:14 by emende           ###   ########.fr       */
+/*   Updated: 2022/02/07 15:48:03 by altikka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,17 @@ static int	*find_coordinates(const char **map)
 	return (array);
 }
 
-static int	get_fifth_line(const int fd)
+static int	get_fifth_line(const int fd, char ***map)
 {
 	char	*line;
 	int		ret;
 
 	ret = get_next_line(fd, &line);
 	if (line == NULL || ret < 0)
+	{
+		free_map((void **) *map, FOUR);
 		return (-1);
+	}
 	if (ret == 0 && *line == '\0')
 	{
 		ft_strdel(&line);
@@ -57,6 +60,7 @@ static int	get_fifth_line(const int fd)
 	}
 	if (*line != '\0')
 	{
+		free_map((void **) *map, FOUR);
 		ft_strdel(&line);
 		return (-1);
 	}
@@ -88,7 +92,7 @@ static int	fill_map(const int fd, char ***map)
 			return (-1);
 		i++;
 	}
-	ret = get_fifth_line(fd);
+	ret = get_fifth_line(fd, map);
 	(*map)[i] = NULL;
 	return (ret);
 }
