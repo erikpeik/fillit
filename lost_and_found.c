@@ -6,7 +6,7 @@
 /*   By: altikka & emende <@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:28:35 by emende            #+#    #+#             */
-/*   Updated: 2022/02/07 15:48:03 by altikka          ###   ########.fr       */
+/*   Updated: 2022/02/07 17:50:57 by emende           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	get_fifth_line(const int fd, char ***map)
 	if (line == NULL || ret < 0)
 	{
 		free_map((void **) *map, FOUR);
+		ft_strdel(&line);
 		return (-1);
 	}
 	if (ret == 0 && *line == '\0')
