@@ -20,7 +20,7 @@ static int	*find_coordinates(const char **map)
 	int	row;
 	int	col;
 
-	array = (int *)malloc(sizeof(*array) * ARR_LEN);
+	array = (int *)malloc(sizeof(*array) * (ARR_LEN));
 	if (array == NULL)
 		return (NULL);
 	i = 0;
@@ -93,8 +93,8 @@ static int	fill_map(const int fd, char ***map)
 			return (-1);
 		i++;
 	}
-	ret = get_fifth_line(fd, map);
 	(*map)[i] = NULL;
+	ret = get_fifth_line(fd, map);
 	return (ret);
 }
 
