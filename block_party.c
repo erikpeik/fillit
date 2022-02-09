@@ -64,13 +64,13 @@ t_block	*block_new(const int *pos)
 	}
 	else
 	{
-		new->pos = (int *)malloc(sizeof(int) * ARR_LEN);
+		new->pos = (int *)malloc(sizeof(int) * (ARR_LEN));
 		if (new->pos == NULL)
 		{
 			free(new);
 			return (NULL);
 		}
-		ft_memcpy(new->pos, pos, (sizeof(int) * ARR_LEN));
+		ft_memcpy(new->pos, pos, (sizeof(int) * (ARR_LEN)));
 	}
 	new->n = 0;
 	new->next = NULL;
